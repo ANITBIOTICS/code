@@ -3,6 +3,13 @@ Kahn's Algorithm:
 2. vertices with indegree of 0 are added to queue. remove a vertex, add to result, reduce indegree of all of its adjacent vertices
 3. if you have an indegree of 0 again, add to queue... repeat
 
+Prim's Algorithm:
+- Starting at a random point, it observes all connected edges and then picks the shortest one that hasn't been picked previously
+- continues until the queue is empty i suppose
+- if not all values were traversed, then pick a new starting point and keep going. (similar to bfs)
+
+
+BFS:
 
 
 
@@ -12,11 +19,12 @@ Bellman-Ford's Algorithm
 - also uses Parent and Dist
 - re-checks every edge for a potential shorter distance instead of just the closest ones (like in Dijkstra)
 
-note: can look for negative cycles (looping things with the value decreasing)
-- after N-1 cycles, if, in the next cycle, there is more change to the array of (distance, vertex), then there's 
-  a negatiive cycle
+  note: can look for negative cycles (looping things with the value decreasing)
+  - after N-1 cycles, if, in the next cycle, there is more change to the array of (distance, vertex), then there's 
+    a negatiive cycle
 
-k shortet path:
+
+k shortest path:
 - restricts parts of the graph to get different paths = different differencess
 - get a list of all of the distances (apparently) and returns the shortest k ones
 
