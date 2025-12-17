@@ -4,53 +4,51 @@
 #include <climits>
 using namespace std;
 
-vector<int> dijkstra( vector<vector<pair<int, int>>>& adj, int src){
-    int V = adj.size();
-
-    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq; //{distance, vertex}
-
-    vector<int> dist(V, INT_MAX);
+vector<int> dijkstra(vector<vector<int>> &arr, int src){
+    vector<int> dist (7, INT_MAX);
+    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int,int>>> pq;
     dist[src] = 0;
     pq.emplace(0, src);
-    
-    while(pq.size() != 0){
-        auto top = pq.top();
-        int distance = top.first;
-        int vertice = top.second;
 
+    while(pq.size() != 0){
+        auto temp = pq.top();
+        int distance = temp.first;
+        int vertex = temp.second;
         pq.pop();
 
-        if(distance > dist[vertice]){
+        if(dist[vertex] < distance){
             continue;
         }
-
-        for(auto& node : adj[vertice]){ 
-           if(dist[node.first] > (dist[vertice] + node.second)){
-                dist[node.first]  = dist[vertice] + node.second;
-                pq.emplace(dist[vertice] + node.second, node.first);
-           }
+        
+        for(vector<int> part: arr){
+            if(part[0] == vertex){
+                int point2 = part[1];
+                int dist2 = part[2];
+                if(distance + dist2 < dist[point2]){    
+                    dist[point2] = distance + dist2;
+                    pq.emplace(dist[point2], point2);
+                }
+            }
         }
     }
-
     return dist;
 }
 
-
-int main() {
-    int src = 0;
-
-    vector<vector<pair<int,int>>> adj(5);
-    adj[0] = {{1,4}, {2,8}};
-    adj[1] = {{0,4}, {4,6}, {2,3}};
-    adj[2] = {{0,8}, {3,2}, {1,3}};
-    adj[3] = {{2,2}, {4,10}};
-    adj[4] = {{1,6}, {3,10}};
-
-    vector<int> result = dijkstra(adj, src);
-
-    for (int d : result)
-        cout << d << " ";
-    cout << " ";
+int main(){
+    vector<vector<int>> arr = {
+        {0, 1, 4}, 
+        {0, 2, 2}, 
+        {1, 3, 3}, 
+        {1, 2, 4}, 
+        {2, 3, 4}, 
+        {2, 4, 5},
+        {3, 5, 2},
+        {3, 4, 5},
+        {3, 6, 5},
+        {5, 6, 2},
+        {4, 6, 5},
+    };
+    vector<int> result = dijkstra(arr, 0);
 
     return 0;
 }

@@ -1,13 +1,10 @@
-/*
-Hw 11/30:
-- finish up Dijkstra
-- research another shortest path algorithms
-- figure out binary heap and fibonnaci heap
+Kahn's Algorithm:
+1. compute in-degrees (how many incoming edges there are for each vertex)
+2. vertices with indegree of 0 are added to queue. remove a vertex, add to result, reduce indegree of all of its adjacent vertices
+3. if you have an indegree of 0 again, add to queue... repeat
 
 
 
-
-Homework: research a shortest pathway algorithms
 
 Bellman-Ford's Algorithm
 - works with negative edges (lines)
@@ -18,6 +15,12 @@ Bellman-Ford's Algorithm
 note: can look for negative cycles (looping things with the value decreasing)
 - after N-1 cycles, if, in the next cycle, there is more change to the array of (distance, vertex), then there's 
   a negatiive cycle
+
+k shortet path:
+- restricts parts of the graph to get different paths = different differencess
+- get a list of all of the distances (apparently) and returns the shortest k ones
+
+
 
 Dijkstra's Algorithm
 - only works for non-negative
@@ -43,4 +46,3 @@ Parent:
 
 Other Info:
   Source (src) = the point that you start at
-*/

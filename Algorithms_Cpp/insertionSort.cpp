@@ -22,8 +22,8 @@ void print(vector<int>& arr){
 }
 
 int main(){
-    vector<int> arr = {9, 5, 3, 4, 6, 7};
-    insertionSort(arr);
-    print(arr);
-    return 0;
+        vector<int> arr = {9, 5, 3, 4, 6, 7};
+        insertionSort(arr);
+        print(arr);
+        return 0;
 }

@@ -1,0 +1,19 @@
+Hw: 12/14
+- code bfs and kahn
+- look at prim  
+
+Hw: 12/7
+- finish BFS
+- research kahn -> prim -> dfs  (by order of importance)
+note: redo Dijkstra next week >:C
+
+Hw 11/30:
+- finish up Dijkstra
+- research another shortest path algorithms
+- figure out binary heap and fibonnaci heap
+
+concerneline: why cant i use new
+
+
+Hw 11/23
+Homework: research a shortest pathway algorithms
