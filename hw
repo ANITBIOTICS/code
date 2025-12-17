@@ -1,0 +1,46 @@
+/*
+Hw 11/30:
+- finish up Dijkstra
+- research another shortest path algorithms
+- figure out binary heap and fibonnaci heap
+
+
+
+
+Homework: research a shortest pathway algorithms
+
+Bellman-Ford's Algorithm
+- works with negative edges (lines)
+- iterates N-1 times with N being the number of vertices (points)
+- also uses Parent and Dist
+- re-checks every edge for a potential shorter distance instead of just the closest ones (like in Dijkstra)
+
+note: can look for negative cycles (looping things with the value decreasing)
+- after N-1 cycles, if, in the next cycle, there is more change to the array of (distance, vertex), then there's 
+  a negatiive cycle
+
+Dijkstra's Algorithm
+- only works for non-negative
+src = 0, everything else = infinity
+
+Dist[vertex] = the current shortest value of all the edges to go to point V from source
+
+min-priority queue:
+- originaly stores (0, source)
+- stores (distance, vertex)
+You add all of the next vertices that are connected,
+you remove the vertice with the smallest distance
+
+Say you remove vertice U, 
+  U -> V (weight N)
+   For vertices V and W going off of U, if dist [V] > dist [U] + N, then you found a shorter path
+   and you update dist[V] = dist[U] + N
+
+Parent:
+  parent[V] = U means that U is the vertice before V in the best path to V
+  - used to reconstruct the best path 
+  - originally, parent[src] = -1
+
+Other Info:
+  Source (src) = the point that you start at
+*/
