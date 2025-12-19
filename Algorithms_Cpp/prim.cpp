@@ -12,6 +12,7 @@ vector<int> prims(vector<vector<int>> arr, vector<bool> visited, int src){
 
     while(q.size()!= 0){
         int temp = q.front();
+        res.push_back(temp);
         q.pop();
 
         int min_index = 0;
@@ -21,12 +22,11 @@ vector<int> prims(vector<vector<int>> arr, vector<bool> visited, int src){
             }
         }
         if(min_index != 0){
-                    q.push(min_index);
-
+            q.push(min_index);
         }        
     }
 
-
+    return res;
 }
 
 void printArr(vector<int> arr){
