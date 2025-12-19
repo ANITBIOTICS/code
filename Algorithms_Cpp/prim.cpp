@@ -4,7 +4,7 @@
 #include <climits>
 using namespace std;
 
-vector<int> prims(vector<vector<int>> arr, vector<bool> visited, int src){
+vector<int> prims(vector<vector<int>> &arr, vector<bool> &visited, int src){
     queue<int> q;
     vector<int> res(arr.size());
     visited[src] = true;
@@ -16,19 +16,25 @@ vector<int> prims(vector<vector<int>> arr, vector<bool> visited, int src){
         q.pop();
 
         int min_index = 0;
-        for(int a: arr[temp]){
-            if(arr[temp][a]<arr[temp][min_index] && !visited[a]){ //finding smallest weight unvisited vertex
-                min_index = a;
+        vector<int> min_key(arr.size());
+        for(int b: res){
+            for(int a: arr[b]){
+                if(arr[b][a]<arr[b][min_index] && !visited[a]){ //finding smallest weight unvisited vertex
+                    min_index = a;
+                    min_key = arr[b];
+                }
             }
         }
+
         if(min_index != 0){
+            visited[min_index] = true;
             q.push(min_index);
         }        
     }
 
     return res;
 }
-
+//fuckign chat gpt called my code a greedy walk, not a minimum spanning tree.
 void printArr(vector<int> arr){
     for(int a: arr){
         cout << a;
