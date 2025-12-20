@@ -16,15 +16,17 @@ vector<int> prims(vector<vector<int>> &arr, vector<bool> &visited, int src){
         q.pop();
 
         int min_index = 0;
-        vector<int> min_key(arr.size());
-        for(int b: res){
-            for(int a: arr[b]){
-                if(arr[b][a]<arr[b][min_index] && !visited[a]){ //finding smallest weight unvisited vertex
+        int min_key;
+        
+        for(vector<int> b : arr){
+            for(int a: b){
+                if(b[a]<b[min_index] && !visited[a]){ //finding smallest weight unvisited vertex
                     min_index = a;
-                    min_key = arr[b];
+                    min_key = b[a];
                 }
             }
         }
+
 
         if(min_index != 0){
             visited[min_index] = true;
