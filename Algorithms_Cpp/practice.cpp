@@ -5,43 +5,45 @@
 using namespace std;
 
 void insertionSort(vector<int>& arr){
-
-    for(int i = 1; i < arr.size(); i++){ //i is the key
-        int value = arr[i];
+    for (int i = 1; i < arr.size(); i++){
         int j = i-1;
-        while(arr[j] > i && j >=0){
-            arr[j+1] = arr[j]; //copy to the right
+        int key = arr[i];
+
+        while(j >=0 && arr[j] > key){
+            arr[j+1] = arr[j];
             j--;
         }
-        arr[j+1] = value;
-    }
-} //notes: don't forget the &
 
-void selectionSort(vector<int>& arr){
-    for(int i = 0; i < arr.size(); i++){
+        arr[j+1] = key;
+    }
+} 
+
+void selectionSort(vector<int>& arr){ //j might go out of bounds
+   for(int i = 0; i < arr.size(); i++){
         int min_index = i;
         for(int j = i+1; j < arr.size(); j++){
-            if(j < i){
+            if(arr[j] < arr[min_index]){
                 min_index = j;
             }
         }
         swap(arr[i], arr[min_index]);
-    }
+   }
 }
 
 int binarySearch(vector<int>& arr, int l, int r, int find){
-    if(l > r){
-        return -1;
-    }
-    int m = l + (r-l)/2;
-    if(arr[m] == find){
-        return m;
-    }else if (arr[m] < find){
-        binarySearch(arr, m+1, r, find);
-    }else{ //arr[m] > find
-        binarySearch(arr, l, m-1, find);
-    }
+    if(l<=r){
+        int m = l + (r-l)/2;
+        if(arr[m] == find){
+            return m;
+        }else if(arr[m] < find){
+            return binarySearch(arr, m+1, r, find);
+        }else{
+            return binarySearch(arr, l, m-1, find);
+        }
+    }    
+    return -1;   
 } 
+
 
 void quickSort(vector<int>& arr, int l, int r){
     if(l < r){
@@ -150,6 +152,9 @@ vector<int> dijkstra(vector<vector<pair<int, int>>>& adj, int src){
     return dist;
 
 }
+
+
+//add bfs (+disjoint), khan and prim
 
 void print(vector<int> arr){
     for(int a: arr){
