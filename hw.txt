@@ -1,6 +1,16 @@
+Hw: 12/21
+- code prims again
+    - see if I can do it a differnet way
+- do bubble bc bored
+- https://www.geeksforgeeks.org/dsa/introduction-to-dynamic-programming-data-structures-and-algorithm-tutorials/ 
+    - figure out difference between Memoization and tabulation
+- understand 3 subtopics of "Basic of DP"  https://www.geeksforgeeks.org/competitive-programming/dynamic-programming/
+- no class next week  :C
+- start the first 3-5 basic DP problems (start on 12/28)
+
 Hw: 12/14
 - code bfs and kahn
-- look at prim  
+- look at prim. prim can go die >:C
 
 Hw: 12/7
 - finish BFS

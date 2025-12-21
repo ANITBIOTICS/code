@@ -19,7 +19,7 @@ vector<int> kahn(vector<vector<int>> &arr){
         if(inDeg[i] == 0){
             q.push(i);
         }
-    }
+    } 
 
     while(q.size() != 0){
         int temp = q.front();

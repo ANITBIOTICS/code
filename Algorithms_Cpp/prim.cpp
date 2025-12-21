@@ -36,7 +36,6 @@ vector<int> prims(vector<vector<int>> &arr, vector<bool> &visited, int src){
 
     return res;
 }
-//fuckign chat gpt called my code a greedy walk, not a minimum spanning tree.
 void printArr(vector<int> arr){
     for(int a: arr){
         cout << a;

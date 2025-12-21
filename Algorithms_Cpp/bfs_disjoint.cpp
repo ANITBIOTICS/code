@@ -23,9 +23,6 @@ vector<int> bfs(vector<vector<int>> &arr, vector<bool> &visited, vector<int> &re
     return res;
 }
 
-
-
-
 int main() {
     vector<int> res;
     vector<vector<int>> arr = {{2, 3},{2}, {0, 1}, {0}, {5}, {4}};
@@ -38,11 +35,8 @@ int main() {
             arr2 = bfs(arr, visited, res, i);
         }
     }
+    
     for(int a: arr2){
         cout << a;
     }
 }
-
-/* 
-see if i can go without putting 3 vectors in my parameters
-*/
