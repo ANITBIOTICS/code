@@ -49,15 +49,15 @@ void quickSort(vector<int>& arr, int l, int r){
     if(l < r){
         int pivot = r;
         int i = l-1;
-        for(int j = l; j < r; j++){
+        for(int j = l; j < r-l; j++){
             if(arr[j] < arr[pivot]){
                 i++;
-                swap(arr[i], arr[j]);
+                swap(arr[j], arr[i]);
             }
         }
         i++;
         swap(arr[i], arr[pivot]);
-
+    
         quickSort(arr, l, i-1);
         quickSort(arr, i+1, r);
     }
@@ -153,8 +153,56 @@ vector<int> dijkstra(vector<vector<pair<int, int>>>& adj, int src){
 
 }
 
+vector<int> bfs(vector<vector<int>> &arr, vector<bool> &visited, vector<int> &res, int src){
+    queue<int> q;
+    q.push(src);
+    visited[src] = true;
+    
+    while(q.size()!= 0){
+        int top = q.front();
+        q.pop();
+        res.push_back(top);
 
-//add bfs (+disjoint), khan and prim
+        for(int a: arr[top]){
+            if(!visited[a] ){
+                q.push(a);
+                visited[a] = true;
+            }
+        }
+    }
+    return res;
+}
+
+vector<int> kahn(vector<vector<int>> &arr){
+    vector<int> inDeg (arr.size());
+    queue<int> q;
+    vector<int> res(arr.size());
+    for(vector<int> arr1: arr){
+        for(int a: arr1){
+            inDeg[a] ++;
+        }   
+    }
+
+    for(int a: inDeg){
+        if(a == 0){
+            q.push(a);
+        }
+    }
+
+    while(q.size()!= 0){
+        int top = q.front();
+        q.pop();
+        res.push_back(top);
+
+        for(int a: arr[top]){
+            inDeg[a]--;
+            if(inDeg[a]==0){
+                q.push(a);
+            }
+        }
+    }
+    return res;
+}
 
 void print(vector<int> arr){
     for(int a: arr){
@@ -164,6 +212,8 @@ void print(vector<int> arr){
 
 
 int main(){
+
+    vector<vector<int>> arr = {{1}, {2}, {3}, {}, {5}, {1, 2}};
     return 0;
 
 }
