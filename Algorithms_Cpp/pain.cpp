@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+
 void printMST(vector<int> & parent, vector<vector<int>> & graph) {
     cout << "Edge \tWeight\n";
     for (int i = 1; i < graph.size(); i++)
