@@ -1,3 +1,23 @@
+hw: 1/11
+- https://usaco.org/index.php?page=viewproblem2&cpid=918  (ref 2025 j4)
+    - check gaps
+    - think windows
+- go back to rodCutting.cpp (look over)
+- https://usaco.org/index.php?page=viewproblem&cpid=1528 
+
+for k = 1, get rid of C's together, O's togehter, W's togehter
+for k = 0, 
+
+1. if n = odd, return -1
+2. if half is square. m = 1, label as 1. 
+3. k = 1, m = 3, C = 1, O = 2, W = 3
+4. 
+
+
+
+
+
+
 Hw: 12/21
 - code prims again
     - see if I can do it a differnet way
