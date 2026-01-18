@@ -1,8 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-
-
 int main(){
     ios::sync_with_stdio(false);
     cin.tie(nullptr); 
@@ -38,11 +36,12 @@ int main(){
         vector <int> res (len, 2);
         int halfLen = len/2;
 
-        for(int i = 0; i < N/2; i++){
+        for(int i = 0; i < N/2; i++){ //go through each half of string
             int l = 3*i;
             int r = halfLen + 3*i;
 
-            string a = S.substr(l, 3);
+            string a = S.substr(l, 3); //the ith rotation of cow
+
             string b = S.substr(r, 3);
 
             if(a == b){
@@ -74,3 +73,8 @@ int main(){
 
     return 0;
 }
+
+
+
+// just do c = 1, o = 2, w = 3
+// maybe figure something out for m=2

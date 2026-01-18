@@ -16,11 +16,17 @@ int main(){
 
     int N; 
     cin >> N;
-    vector<bool> arr (false);
+    vector<int> arr (N);
+    for (int i = 0; i < N; i++){
+        cin >> arr[i];
+    }
+    sort(arr.begin(), arr.end());
+
+
+    int minMoves;
 
     for(int i = 0; i < N; i ++){
         //minimums
-        int minMoves;
         if (arr[N-2] - arr[0] == (long long)N - 2 && arr[N-1] - arr[N-2] > 2){
             minMoves = 2;
         }else if (arr[N-1] - arr[1] == (long long)N - 2 && arr[1] - arr[0] > 2){
@@ -35,12 +41,12 @@ int main(){
         }
         minMoves = N - best;
     }
-    //maximum
-    int maxMoves = max(arr[N-2] - arr[0], arr[N-1] - arr[1]) - ((long long)N - 2);
-    cout << minMoves << "\n" << maxMoves << "\n";
 
     }
     
+    //maximum
+    int maxMoves = max(arr[N-2] - arr[0], arr[N-1] - arr[1]) - ((long long)N - 2);
+    cout << minMoves << "\n" << maxMoves << "\n";
 
 
 
