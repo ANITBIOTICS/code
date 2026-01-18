@@ -46,21 +46,31 @@ int main(){
             string b = S.substr(r, 3);
 
             if(a == b){
-                
+                for(int j = 0; j < 3; j++){
+                    res[l+j] = 1;
+                    res[r+j] = 1;
+                }
+                continue;
+            }else{
+                bool isFound = false;
+                if(!isFound){
+                    for(int k = 0; k < 2; k++){
+                        for(int l = 0; l < 2; l++){
+                            int a1 = (k == 0 ? 2 : 0);
+                            int b1 = (l == 0 ? 2 : 0);
+                            res[l + a1] = 2;
+                            res[r + b1] = 2;
+                            isFound = true;
+                        }
+                    }
+                }
             }
         }
-
-
-
-            
-        
-
-
+        for (int i = 0; i < 3 * N; i++) {
+            cout << res[i] << (i + 1 == 3 * N ? '\n' : ' ');
+        }
 
     }
-
-
-
 
     return 0;
 }
