@@ -1,3 +1,9 @@
+hw: 1/18
+- rev old algorithms
+- rod rodCutting (and more)
+- 
+
+
 hw: 1/11
 - https://usaco.org/index.php?page=viewproblem2&cpid=918  (ref 2025 j4)
     - check gaps
