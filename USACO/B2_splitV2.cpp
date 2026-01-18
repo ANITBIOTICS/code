@@ -26,31 +26,34 @@ int main(){
 
         //one operation
         if(S.substr(0, len/2) == S.substr(len/2)){
-            cout << 1 << "\n";
+            cout << 1 << "\n"; //output M
             for(int j = 0; j < len; j++){
                 cout << 1 << (j + 1 == len ? '\n' : ' ');
-            }
-          
+            }         
             continue;
         }
 
-        if(k == 1){
-            cout << 3 << "\n";
-            for(int i = 0; i < 3 * N; i++){
-                string str = S.substr(i, 1);
-                if(str == "C"){
-                    cout << 1 << " ";
-                }else if (str == "O"){
-                    cout << 2 << " ";
-                }else{
-                    cout << 3 << " ";
-                }
+        //do it in 2 operations
+        cout << 2 << endl; //ouput M
+        vector <int> res (len, 2);
+        int halfLen = len/2;
+
+        for(int i = 0; i < N/2; i++){
+            int l = 3*i;
+            int r = halfLen + 3*i;
+
+            string a = S.substr(l, 3);
+            string b = S.substr(r, 3);
+
+            if(a == b){
+                
             }
-            cout << endl;
-            continue;
-        }else{ // k = 0
-            
         }
+
+
+
+            
+        
 
 
 
