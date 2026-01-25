@@ -48,7 +48,5 @@ int main(){
     int maxMoves = max(arr[N-2] - arr[0], arr[N-1] - arr[1]) - ((long long)N - 2);
     cout << minMoves << "\n" << maxMoves << "\n";
 
-
-
     return 0;
 }
