@@ -5,6 +5,9 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
+    freopen("photo.in", "r", stdin);
+    freopen("photo.out", "w", stdout);
+    
     int N;
     cin >> N;
 
