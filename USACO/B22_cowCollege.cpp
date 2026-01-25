@@ -11,11 +11,10 @@ int main(){
     cin >> N;
     vector<int> arr (N);
 
-    for(int i = 0; i < N; i++){ //input all of the max cow tuitions. 
-        cin >> arr[i];
-    }
+    for(int i = 0; i < N; i++) cin >> arr[i];
+
     sort(arr.begin(), arr.end());
-    long long bestSum = 0;
+    long long bestSum = -1;
     long long bestCost = 0;
     
     for(int cost = 0; cost <=arr[N-1]; cost++){ //  a loop going through all the values from cost = 0 to cost = the largest value a cow is willing to pay
@@ -38,3 +37,9 @@ int main(){
     cout << bestSum << " " << bestCost;
     return 0;
 }
+
+
+/*
+faster method, find the number of times tuition increases. then calculate the sum for each jump intuition.
+
+*/
