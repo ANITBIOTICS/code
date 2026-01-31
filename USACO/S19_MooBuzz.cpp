@@ -7,7 +7,7 @@ int main(){
 
     int N;
     cin >> N;
-
+ //a
     /*
     let the theoretical number of things said be M.
     M = N + M/5 + M/3 - M%15
