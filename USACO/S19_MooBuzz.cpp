@@ -5,9 +5,12 @@ int main(){
     ios::sync_with_stdio(false);
     cin.tie(nullptr); 
 
+    freopen("moobuzz.in", "r", stdin);
+    freopen("moobuzz.out", "w", stdout);
+    
     int N;
     cin >> N;
- //a
+    
     /*
     let the theoretical number of things said be M.
     M = N + M/5 + M/3 - M%15
