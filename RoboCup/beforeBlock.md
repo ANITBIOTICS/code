@@ -25,7 +25,7 @@
 	int isRight; //0 is false, 1 is traue
 	int doMove=0;
 	int moveRatio = 0.1; //ratio for movetopose
-	int isHoriBlin d, isVertiBlind;
+	int isHoriBlind, isVertiBlind;
 	
 	//negative speed is 0, positive is 2
 	
@@ -302,7 +302,7 @@
 		int dist = sqrt(pow(yDiff, 2) + pow(xDiff, 2));
 		int relativeSpeed = constrain(dist/20, 15, 60);
 		
-			if(dist > 75){
+			if(dist > 50){
 				SetLCDSolidCircle(0, 0, 100, 65535);
 
 				int ref = ( atan((yDiff * 1.0)/(xDiff)) *180.0)/ 3.14;
@@ -325,7 +325,8 @@
 				move(angle, relativeSpeed);
 				
 			}else{
-
+				move(angle, speed) ;
+				/*
 				if(isHoriBlind == 1 && isVertiBlind == 1){
 					SetLCDSolidCircle(0, 0, 100, 2016);
 					move(-1, 0);
@@ -348,6 +349,7 @@
 						move(-1, 0);
 					}
 				}
+				*/
 				
 			}
 			
@@ -488,7 +490,7 @@
 		whiteLeft = GetADScable10(_SCABLEAD_left_);
 		whiteBack = GetADScable10(_SCABLEAD_back_);
 		whiteFront = GetADScable10(_SCABLEAD_front_);
-		
+	/*	
 		
 		if((abs(left + right - hori) > 800)){
 			isHoriBlind = 1;
@@ -501,6 +503,7 @@
 			isVertiBlind = 0;
 		}
 		
+	*/
 	
 		if(ldist>rdist){
 			where = lwhere;
@@ -556,7 +559,7 @@
 		SetLCD5Char(150,200, getBallDirection(), YELLOW,BLACK);
 	*/
 		
-		/*
+		
 		
 		if(whiteRight < 2450 || whiteLeft < 1900 || whiteFront < 1900 || whiteBack<2000){ //white line
 			seeWhite();
@@ -570,11 +573,6 @@
 				ball();
 			} 
 		} 
-		
-		
-		*/
-		
-		goToPoint(0, 0);
 		
 		
 		
