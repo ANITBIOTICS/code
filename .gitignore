@@ -1,0 +1,13 @@
+//Ignore .vs, .vscode
+.vs/
+.vscode/
+//Ignore build files
+build/
+*.exe
+*.out
+
+*.py
+*.txt
+*.json
+temp
+.DS_store
