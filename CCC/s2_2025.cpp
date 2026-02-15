@@ -8,14 +8,33 @@ int main(){
     string S;
     cin >> S;
     int length = S.size();
-    int c;
+    long long c;
     cin >> c;
-    regex numberRegex("(\\d+)");
-    sregex_iterator it(S.begin(), S.end(), numberRegex);
-    sregex_iterator end;
+
+    long long numRepeats = 0;
+
+    vector<char> letters;
+    vector<long long> numF;
+
+    for(int i = 0; i < length;){
+        char a = S[i++];
+
+
+        long long cnt = 0;
+        // find the mul dig
+        while (i < length && isdigit(S[i])) {
+            cnt = cnt * 10 + (S[i++] - '0');
+        }
+
+        numRepeats += cnt;
+        letters.push_back(a);
+        numF.push_back(numRepeats);
+    }
+    
+    long long out = c % numRepeats;
+    int indx = upper_bound(numF.begin(), numF.end(), out) - numF.begin();
+    cout << letters[indx];
 
     
-    
-//isdigit9) gives you boolean
     return 0;
 }

@@ -1,40 +1,33 @@
 #include <bits/stdc++.h>
-#include <regex>
 using namespace std;
-
-
 
 int main(){
     string S;
     cin >> S;
-    int length = S.size();
-    long long c;
+    long long c; 
     cin >> c;
 
-    long long numRepeats = 0;
+    long long num=0;
 
-    vector<char> letters;
-    vector<long long> numF;
+    vector<char> letters; //stores the letters that are repeated
+    vector<long long> numF; //the last index that the letter repeats to
 
-    for(int i = 0; i < length;){
+    for(int i = 0; i < (int)S.size();){
         char a = S[i++];
-
-
-        long long cnt = 0;
-        // find the mul dig
-        while (i < length && isdigit(S[i])) {
-            cnt = cnt * 10 + (S[i++] - '0');
+        long long count=0;
+        while(i < (int)S.size() && isdigit(S[i])){
+            count = count*10 + (S[i] - '0');
+            i++;
         }
 
-        numRepeats += cnt;
+        num += count;
         letters.push_back(a);
-        numF.push_back(numRepeats);
+        numF.push_back(num);
     }
-    
-    long long out = c % numRepeats;
-    int indx = upper_bound(numF.begin(), numF.end(), out) - numF.begin();
-    cout << letters[indx];
 
-    
+    long long rep = c%num;
+    int res = upper_bound(numF.begin(), numF.end(), rep) - numF.begin();
+    cout << letters[res];
+
     return 0;
 }
