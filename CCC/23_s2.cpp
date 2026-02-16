@@ -54,15 +54,7 @@ int main(){
         }
     }
 
-    // for(int size = 1; size < N; size++){
-    //     for(int i = 0; i <= N-(size+1); i++){
-    //         long long sum = 0;
-    //         for(int j = 0; j < (size+1)/2; j++){
-    //             sum += abs(mountains[i+j]-mountains[size+i-j]); //suspicious numbers
-    //         }
-    //         res[size] = min(res[size], sum);
-    //     }
-    // }
+    
 
 
     for(int i = 1; i <= N; i++){
@@ -71,3 +63,14 @@ int main(){
 
     return 0;
 }
+
+
+// for(int size = 1; size < N; size++){
+    //     for(int i = 0; i <= N-(size+1); i++){
+    //         long long sum = 0;
+    //         for(int j = 0; j < (size+1)/2; j++){
+    //             sum += abs(mountains[i+j]-mountains[size+i-j]); //suspicious numbers
+    //         }
+    //         res[size] = min(res[size], sum);
+    //     }
+    // }
