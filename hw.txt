@@ -1,4 +1,11 @@
+hw: 03/01
+- leran hash tables
+- 
+
+
+
 hw: 1/18
+
 - rev old algorithms
 - rod rodCutting (and more)
 - 
