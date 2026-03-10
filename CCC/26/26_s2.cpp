@@ -5,28 +5,31 @@ using namespace std;
 int main(){
     ios::sync_with_stdio(false);
     cin.tie(nullptr); 
+    int N, L, Q; cin >> N >> L >> Q;
 
-    int N; cin >> N;
-    vector<int> spots (N, 0);
-
-    int L; cin >> L;
-    int Q; cin >> Q;
-
+    vector<int> lights(N+3, 0);
     for(int i = 0; i < L; i++){
-        int location; cin >> location; location --;
-        int spread; cin >> spread;
+        int P, S; cin >> P >> S;
 
-        int leftLight, rightLight;
-        leftLight = max(0, location-spread);
-        rightLight = min(location+spread, (int)spots.size());
-        for(int i = leftLight; i <= rightLight; i++) spots[i] ++;
+        int l = max(1,P-S);
+        int r = min(P+S,N); 
+
+        lights[l] +=1;
+        lights[r+1] -=1;
     }
 
-    for(int i = 0; i < Q; i++){
-        int light; cin >> light;
-        string res = (spots[light-1] > 0 ? "Y" : "N");
-        cout << res << endl;
-    } 
+    int cur = 0;
+    vector<int> cover(N+2,0);
+    for(int i = 1; i <= N; i++){
+        cur += lights[i];
+        cover[i] = cur;
+    }
+
+    while(Q--){
+        int x; cin >> x;
+        cout << (cover[x] > 0 ? 'Y' : 'N') << endl;
+    }
+
     return 0;
 }
 
