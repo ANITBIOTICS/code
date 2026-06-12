@@ -14,7 +14,10 @@ int recur(int i, int j, int n){
 
 
 int main(){
+    int n = 5;
+    for(int i = 0; i < n; i++){
+        cout << recur(n, i, n) << " ";
+    }    
     
-
     return 0;
 }
