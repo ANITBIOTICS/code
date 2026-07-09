@@ -2,54 +2,21 @@
 using namespace std;
 #define ll long long
 
-int minSumPathRec(vector<vector<int>> triangle, int i, int j, vector<vector<int>>&dp){
+ll int MOD = 1e9+7;
 
-    // base case: no value below the last row
-    if(i == triangle.size()){ // bottom row of triangle
-        return 0;
-    }
+long long dp(int n, vector<ll> &memo){
+    if(n < 0) return 0;
+    if(n == 0) return 1;
+    if(memo[n] != -1) return memo[n];
 
-    //if the result for this subproblem is already computed then return it
-    if (dp[i][j] != -1){
-        return dp[i][j];
-    }
-
-    return triangle[i][j] + min(minSumPathRec(triangle, i+1, j, dp), minSumPathRec(triangle, i+1, j+1, dp));
+    long long total = 0;
+    for (int k = 1; k <= 6; k++) total = (total + dp(n - k, memo)) % MOD;
+    return memo[n] = total;
 }
 
-int minSumPath(vector<vector<int>> &triangle){
-    int n = triangle.size();
-    // dp arrary: store the result
-    vector<vector<int>> dp (n, vector<int>(n, -1));
-
-    return minSumPathRec(triangle, 0, 0, dp);
-}
-
-int minSumPathTab(vector<vector<int>> &triangle){
-    vector<vector<int>> dp (triangle.size(), vector<int> (triangle.size()));
-    //dp's last row = triangle last row
-    for(int i = 0; i < triangle.size(); i++){
-        dp[triangle.size()-1][i] = triangle[triangle.size()-1][i];
-    }
-    //for loop thing idk-+
-    for(int i = triangle.size()-2; i >= 0; i--){
-        for(int j = 0; j < triangle[i].size(); j++){
-            dp[i][j] = triangle[i][j] + min(dp[i+1][j+1], dp[i+1][j]);
-        }
-    }
-    //return the desired point from the dp vector
-    return dp[0][0]; 
-}
 int main(){
-    vector<vector<int>> triangle = {
-    {2},
-    {3, 9},
-    {1, 6, 7}};
-
-    
-    cout << minSumPathTab(triangle);
-    return 0;
-
-    // int temporary for minsum path tab
-
-}
+    int n;
+    cin >> n;
+    vector<ll> memo(n + 1, -1);
+    cout << dp(n, memo);
+}   
