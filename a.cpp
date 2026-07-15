@@ -1,63 +1,34 @@
 #include <bits/stdc++.h>
-#include <unordered_set>
-
 using namespace std;
-
 #define ll long long
 
 int main(){
+    ll n, k; cin >> n >> k;
+    vector<int> arr(k);
+    ll x, a, b, c; cin >> x >> a >> b >> c;
 
-    int n;
-    cin >> n;
+    ll curr_xor = 0;
+    ll ans = 0;
+    ll thing = 0;
+    for(int i = 0; i < k; i++){
+        arr[i] = x;
+        thing ^= x;
 
-    // XOR
-
-    // for(int r = 0; r < n; r++){
-    //     for (int c = 0; c < n; c++){
-    //         cout << (r ^ c) ;
-    //         if (c != n -1) cout << " ";
-    //     }
-    //     cout << "\n";
-    // }
-
-    vector<vector<int>> arr (n, vector<int> (n));
-
-    for(int r = 0; r < n; r++){
-        for(int c = 0; c < n; c++){
-            unordered_set<int> used;
-
-            for(int i = 0; i < c; i++){
-                used.insert(arr[r][i]);
-            }
-
-            for(int i = 0; i < r; i++){
-                used.insert(arr[i][c]);
-            }
-
-            int mex = 0;
-            while(used.count(mex)){
-                mex++;
-            }
-
-            arr[r][c] = mex;
-        }
+        if(i != k-1) x = (a * x + b) % c;
     }
+    ans ^= thing;
 
-    for(int r = 0; r < n; r++){
-        for (int c = 0; c < n; c++){
-            cout << arr[r][c];
-            if (c != n -1) cout << " ";
-        }
-        cout << "\n";
+    for(ll i = k; i < n; i++){
+        ll indx = i % k;
+        x = (a * x + b) % c;
+
+        thing |= arr[indx]; //remove
+        thing |= x; //add
+        arr[indx] = x; // update window
+
+        ans ^= thing;
     }
+    cout << ans << "\n";
 
-    
     return 0;
 }
-
-
-/*
-
-
-
-*/
