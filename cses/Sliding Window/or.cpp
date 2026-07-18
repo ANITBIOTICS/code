@@ -7,40 +7,67 @@ int main(){
     vector<int> arr(k);
     ll x, a, b, c; cin >> x >> a >> b >> c;
 
-    ll curr_or = 0;
-    ll ans = 0;
+    ll p = 0, q = k, ans = 0;
+    vector<ll> val(k), agg(k);
 
-    // for (ll i = 0; i < n; i++){
-    //     if (i < k){
-    //         // first window
-    //         arr[i] = x;
-    //         curr_or ^= x;
-    //     }else{
-    //         // slide the window
-    //         // remove old value, add new value
-    //         ll index = i % k;
+    for (ll i = 0; i < n; i++){
+        ll curr = x;
 
-    //         curr_or ^= arr[index];
-    //         curr_or ^= x;sss
+        if (i >= k){
+            if (q == k){
+                for (ll j = k - 1; j >= 0; j--){
+                    agg[j] = val[j];
 
-    //         arr[index] = x;
-    //     }
+                    if (j + 1 < k){
+                        agg[j] |= agg[j + 1];
+                    }
+                }
+                p = 0;
+                q = 0;
+            }
 
-    //     if(i >= k -1){
-    //         ans ^= curr_or;
-    //     }
 
-    //     // next value
-    //     x = (a * x + b) % c;
+            q++;
 
+        }
+
+        val[p] = curr;
+
+        if (p == 0)agg[p] = curr;
+        else agg[p] = agg[p - 1] | curr;
     
-    // cout << ans << endl;
+
+        p++;
+
+        if (i >= k - 1){
+            ll incoming_or = (p == 0 ? 0 : agg[p - 1]);
+            ll outgoing_or = (q == k ? 0 : agg[q]);
+            ll window_or = incoming_or|outgoing_or;
+
+            ans ^= window_or;
+        }
+
+        x =(a * x + b) % c;
+    }
+
+    cout << ans << '\n';
     return 0;
-    
 }
 
 
 /*
+
+you need to maintain the current window as an aggre queue that's formed by two stacks
+an incoming one to store prefix OR and an outgoing to store suffix OR
+OR of entiere widw = OR of two stack aggregates
+every window always contains k elemenst os voth stacks can share the same two arryas
+incoming stack: indices [0, p) and outgoing inddces [q, k)
+when teh outgoing one is empty rebuild it from the incoming st ack by computing suffix ORs right to left
+
+k = 4
+
+0 3 8 11 10 2
+
 A:  1 0 1 1 0 
 B:  1 1 0 0 0
 ---------------------------
@@ -50,4 +77,5 @@ C:  1 1 1 1 0
 0 0 = 0
 1 0 = 
 1 1 = 1 0 OR 1 1
+
 */
