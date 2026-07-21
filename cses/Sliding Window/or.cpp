@@ -12,13 +12,12 @@ int main(){
 
     for (ll i = 0; i < n; i++){
         ll curr = x;
-
         if (i >= k){
             if (q == k){
                 for (ll j = k - 1; j >= 0; j--){
                     agg[j] = val[j];
 
-                    if (j + 1 < k){
+                    if (j+1 < k){
                         agg[j] |= agg[j + 1];
                     }
                 }
@@ -26,17 +25,13 @@ int main(){
                 q = 0;
             }
 
-
             q++;
-
         }
 
         val[p] = curr;
 
         if (p == 0)agg[p] = curr;
         else agg[p] = agg[p - 1] | curr;
-    
-
         p++;
 
         if (i >= k - 1){
@@ -75,7 +70,7 @@ C:  1 1 1 1 0
 
 
 0 0 = 0
-1 0 = 
+1 0 = 1
 1 1 = 1 0 OR 1 1
 
 */

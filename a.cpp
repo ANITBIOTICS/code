@@ -4,31 +4,34 @@ using namespace std;
 
 int main(){
     ll n, k; cin >> n >> k;
-    vector<int> arr(k);
-    ll x, a, b, c; cin >> x >> a >> b >> c;
+    vector<int> arr(n);
+    for(int&x : arr) cin >> x;
 
-    ll curr_xor = 0;
-    ll ans = 0;
-    ll thing = 0;
+    vector<int> values = arr;
+    sort(values.begin(), values.end());
+    values.erase(unique(values.begin(), values.end()),values.end());
+
+    for(int &x : arr) x = lower_bound(values.begin(), values.end(), x) - values.begin();
+    vector<int> freq(values.size(),0);
+    
+    int distinct = 0;
     for(int i = 0; i < k; i++){
-        arr[i] = x;
-        thing ^= x;
-
-        if(i != k-1) x = (a * x + b) % c;
+        if(freq[arr[i]] == 0) distinct ++;
+        freq[arr[i]] ++;
     }
-    ans ^= thing;
+    cout << distinct << " ";
 
-    for(ll i = k; i < n; i++){
-        ll indx = i % k;
-        x = (a * x + b) % c;
+    for(int r = k; r < n; r++){
+        int l = r-k;
 
-        thing |= arr[indx]; //remove
-        thing |= x; //add
-        arr[indx] = x; // update window
+        freq[arr[l]] --;
+        if(freq[arr[l]] == 0) distinct --;
 
-        ans ^= thing;
+        freq[arr[r]] ++;
+        if(freq[arr[r]] == 1) distinct ++;
+
+        cout << distinct << " ";
     }
-    cout << ans << "\n";
 
     return 0;
 }
